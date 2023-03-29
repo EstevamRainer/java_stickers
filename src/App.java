@@ -20,7 +20,7 @@ public class App {
         List<Map<String, String>> listaDeFilmes = parser.parse(body);
         for (var i = 0; i < 10; i++) {
             Map<String,String> filme = listaDeFilmes.get(i);
-            String imagemUrl = filme.get("image");
+            String imagemUrl = filme.get("image").replaceAll("(@+)(.*).jpg$", "$1.jpg");
             InputStream inputStream = new URL(imagemUrl).openStream();
             String titulo = filme.get("title");
             String nomeArquivo = titulo + ".png";
